@@ -1,0 +1,101 @@
+<!-- Version: #1 -->
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premietrekning - Idrettsarrangement</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Premietrekning</h1>
+            <p>Speaker-verktøy for sesongavslutning</p>
+        </header>
+
+        <!-- SEKSJON: Konfigurasjon og Data -->
+        <section id="setup-section" class="panel">
+            <h2>1. Oppsett</h2>
+            <div class="input-group-container">
+                <div class="input-group">
+                    <label for="participant-input">Deltakerliste (én per linje):</label>
+                    <textarea id="participant-input" placeholder="Lim inn navn her...&#10;Ola Nordmann&#10;Kari Nordmann"></textarea>
+                    <div class="count-display">Antall deltakere: <span id="participant-count">0</span></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="prize-input">Premieliste (rangeres fra topp til bunn):</label>
+                    <textarea id="prize-input" placeholder="Lim inn premier her...&#10;Hovedpremie: Ski&#10;Gavekort 500kr&#10;Sjokolade"></textarea>
+                    <div class="count-display">Antall premier: <span id="prize-count">0</span></div>
+                </div>
+            </div>
+
+            <div class="settings-bar">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="allow-repeat-winners">
+                    <span class="checkmark"></span>
+                    Tillat at samme person vinner flere ganger (Med tilbakelegging)
+                </label>
+                
+                <button id="save-data-btn" class="btn secondary">Lagre lister manuelt</button>
+                <button id="reset-all-btn" class="btn danger">Nullstill alt</button>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- SEKSJON: Selve Trekningen -->
+        <section id="draw-section" class="panel active-game">
+            <h2>2. Trekning</h2>
+            
+            <div class="current-status">
+                <div class="prize-display">
+                    <span class="label">Nåværende Premie:</span>
+                    <h2 id="current-prize-display">Ingen premie valgt</h2>
+                </div>
+            </div>
+
+            <div class="action-area">
+                <button id="draw-btn" class="btn primary big-btn">TREKK VINNER</button>
+                
+                <div id="decision-area" class="hidden">
+                    <div class="winner-reveal">
+                        <span class="label">Trukket vinner:</span>
+                        <h1 id="candidate-display">...</h1>
+                    </div>
+                    
+                    <div class="decision-buttons">
+                        <button id="confirm-btn" class="btn success">Godkjenn (Er tilstede)</button>
+                        <button id="skip-btn" class="btn warning">Ikke tilstede / Hopp over</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- SEKSJON: Historikk -->
+        <section id="history-section" class="panel">
+            <h2>3. Historikk / Vinnere</h2>
+            <table id="winners-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Premie</th>
+                        <th>Vinner</th>
+                        <th>Tidspunkt</th>
+                    </tr>
+                </thead>
+                <tbody id="winners-list">
+                    <!-- Vinnere legges til her via JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- Version: #1 -->
